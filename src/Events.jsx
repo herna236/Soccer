@@ -9,10 +9,10 @@ function Sessions() {
         Session Packages
       </Typography>
       <Typography variant="h6" gutterBottom>
-        3 Sessions - $100
+        3 Sessions - Contact For Prices
       </Typography>
       <Typography variant="h6" gutterBottom>
-        6 Sessions - $175
+        6 Sessions - Contact For Prices
       </Typography>
       <Typography variant="h6" color="red" gutterBottom>
         All sessions are currently filled. Please contact us to be added to the waitlist.
