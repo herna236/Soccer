@@ -5,7 +5,7 @@ function About() {
   return (
     <Box display="flex" flexDirection="column" alignItems="center" p={3}>
       <Avatar
-        src="/assets/eric1.jpeg"
+        src="/assets/eric1.JPG"
         alt="Coach Eric"
         sx={{ width: 150, height: 150, mb: 2 }}
       />
