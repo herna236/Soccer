@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, TextField, Typography, Snackbar, Alert } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
+import emailjs from "emailjs-com";
 
 function Contact() {
   const [formData, setFormData] = useState({
@@ -8,6 +9,9 @@ function Contact() {
     email: "",
     message: "",
   });
+  const [openSnackbar, setOpenSnackbar] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [severity, setSeverity] = useState("success");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -15,11 +19,33 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-   //would use back end to send email or third party app to send email
-    alert(
-      `Message sent!\n\nName: ${formData.name}\nEmail: ${formData.email}\nMessage: ${formData.message}`
+
+    emailjs.sendForm(
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+      e.target,
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+    )
+    .then(
+      (result) => {
+        console.log(result.text);
+        setSnackbarMessage("Message sent successfully!");
+        setSeverity("success");
+        setOpenSnackbar(true);
+      },
+      (error) => {
+        console.log(error.text);
+        setSnackbarMessage("There was an error sending your message. Please try again later.");
+        setSeverity("error");
+        setOpenSnackbar(true);
+      }
     );
+
     setFormData({ name: "", email: "", message: "" });
+  };
+
+  const handleCloseSnackbar = () => {
+    setOpenSnackbar(false);
   };
 
   return (
@@ -32,6 +58,7 @@ function Contact() {
         display: "flex",
         flexDirection: "column",
         gap: 2,
+        position: "relative",
       }}
     >
       <Typography variant="h5" textAlign="center">
@@ -64,14 +91,36 @@ function Contact() {
         onChange={handleChange}
         required
       />
-   <Button
-  variant="contained"
-  type="submit"
-  sx={{ backgroundColor: "#388E3C", '&:hover': { backgroundColor: "#2c6f2e" } }} // Custom color with hover effect
-  endIcon={<SendIcon />}
->
-  Send Message
-</Button>
+      <Button
+        variant="contained"
+        type="submit"
+        sx={{ backgroundColor: "#388E3C", '&:hover': { backgroundColor: "#2c6f2e" } }}
+        endIcon={<SendIcon />}
+      >
+        Send Message
+      </Button>
+
+
+      <Snackbar
+        open={openSnackbar}
+        autoHideDuration={6000}
+        onClose={handleCloseSnackbar}
+        anchorOrigin={{ vertical: 'top', horizontal: 'center' }} // Centered
+        sx={{
+          position: 'absolute',
+          top: '100%',
+          left: 0,
+          right: 0,
+        }}
+      >
+        <Alert
+          onClose={handleCloseSnackbar}
+          severity={severity}
+          sx={{ width: '100%' }}
+        >
+          {snackbarMessage}
+        </Alert>
+      </Snackbar>
     </Box>
   );
 }

@@ -9,6 +9,9 @@ function Banner() {
         width: "100%",
         height: 400,
         overflow: "hidden", // Hide overflow from the video
+        "@media (max-width:600px)": {
+          height: 250, // Adjust height for smaller screens
+        },
       }}
     >
       {/* Default Image Background */}
@@ -46,24 +49,28 @@ function Banner() {
         Your browser does not support the video tag.
       </video>
 
-      {/* Text over the image/video */}
+      {/* Text over the image/video
       <Typography
-        variant="h3"
+        variant="h4"
         sx={{
           position: "absolute",
-          top: "10%",
-          left: "20%",
-          transform: "translate(-50%, -50%)",
+          top: "5%",
+          left: "30%",
+          transform: "translateY(-50%)",
           color: "#388E3C",
-          textAlign: "left",
-          backgroundColor: "rgba(0, 0, 0, 0.0)",
+          fontFamily: "Poppins, sans-serif",
+          fontWeight: "600",
+          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.3)",
           padding: 1,
-          borderRadius: 1,
-          textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
+          "@media (max-width:600px)": {
+            fontSize: "1.25rem",
+            top: "10%",
+            left: "30%"
+          },
         }}
       >
         THE GOALKEEPERS WORKSHOP
-      </Typography>
+      </Typography> */}
     </Box>
   );
 }

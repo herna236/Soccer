@@ -1,12 +1,12 @@
 import React from "react";
 import { Button } from "@mui/material";
-import { useNavigate } from "react-router-dom";  // Import useNavigate
+import { useNavigate } from "react-router-dom";
 
 function JoinButton() {
-  const navigate = useNavigate(); // Hook to handle navigation
+  const navigate = useNavigate();
 
   const handleClick = () => {
-    navigate("/Events");  // Navigate to the /Events page
+    navigate("/Events");
   };
 
   return (
@@ -16,12 +16,17 @@ function JoinButton() {
         backgroundColor: "#388E3C",
         color: "white",
         fontSize: "1.2rem",
-        padding: "10px 20px",
+        fontFamily: "Poppins, sans-serif",
+        padding: "12px 25px",
+        borderRadius: "8px",
+        textTransform: "none",
+        boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)", // Subtle shadow
         "&:hover": {
-          backgroundColor: "#2c6e2f"  // Darker shade on hover
-        }
+          backgroundColor: "#2c6e2f",
+          boxShadow: "0 6px 8px rgba(0, 0, 0, 0.2)",
+        },
       }}
-      onClick={handleClick}  // Use the handleClick function for navigation
+      onClick={handleClick}
     >
       Join the Team
     </Button>

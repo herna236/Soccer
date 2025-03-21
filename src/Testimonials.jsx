@@ -3,10 +3,10 @@ import { Box, Card, CardContent, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 
 const testimonials = [
-  { name: "Aaron Hernandez", text: "Eric is the man" },
-  { name: "Michael Smith", text: "I love the travel recommendations. Everything was perfect!" },
-  { name: "Samantha Lee", text: "A must-visit site for any traveler. Super useful and easy to navigate." },
-  { name: "Daniel Brown", text: "Great experience! Found the perfect vacation spot thanks to this." },
+  { name: "James Carter", text: "Coach Eric has transformed my game completely. His dedication and knowledge are unmatched!" },
+  { name: "Lisa Reynolds", text: "My son has improved so much under Coach Eric's guidance. He is an incredible mentor!" },
+  { name: "Mark Thompson", text: "Eric's coaching style is both inspiring and effective. He truly cares about his players' growth." },
+  { name: "Sophia Martinez", text: "I've never met a coach more passionate and skilled than Eric. His training sessions are top-notch!" },
 ];
 
 // Duplicate testimonials to create a seamless loop
